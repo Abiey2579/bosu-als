@@ -2,21 +2,27 @@ import { useState } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../config/ClientSDK";
 import { Spinner } from "flowbite-react";
+import { useNavigate } from "react-router-dom";
+import { URIPaths } from "../../util/URIPaths";
 
 export default function SignIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [spin, setSpin] = useState(false);
+  const navigateTo = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
     try {
       setSpin(true);
-      await signInWithEmailAndPassword(auth, email, password);
-      alert("Sign in successful!");
+      const promise = await signInWithEmailAndPassword(auth, email, password);
+      // alert("Sign in successful!");
       // Redirect or perform additional actions here
+
+      console.log(promise);
+      navigateTo(URIPaths.Dashboard, { state: promise.user });
     } catch (err: any) {
       setError(err.message || "Failed to sign in");
     } finally {
