@@ -1,5 +1,5 @@
 import { Tabs } from "flowbite-react";
-import { TabTheme } from "../../../assets/Util/FlowbiteCustomTheme";
+import { TabTheme } from "../../../util/Flowbite";
 import {
   SwatchIcon,
   LockOpenIcon,
