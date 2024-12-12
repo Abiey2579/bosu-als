@@ -1,6 +1,5 @@
 import { ArrowTrendingUpIcon } from "@heroicons/react/24/solid";
-import DailyRevenueChart from "./DailyRevenueChart";
-import WeeklyRevenueChart from "./WeeklyRevenueChart";
+import GenerateTimeTable from "./GenerateTimeTable";
 
 const Overview = () => {
   return (
@@ -9,8 +8,8 @@ const Overview = () => {
       <div className="grid grid-cols-3 gap-4">
         {/* FIRST  */}
         <div className="p-4 space-y-4 bg-shade border rounded-xl">
-          <h4 className="text-xs text-gray-500 font-medium">Total Courses</h4>
-          <h1 className="text-5xl font-semibold font-Headings">11</h1>
+          <h4 className="text-xs text-gray-500 font-medium">Total Faculties</h4>
+          <h1 className="text-5xl font-semibold">11</h1>
 
           <div className="flex items-center gap-2">
             <div className="flex text-dominance bg-success  font-semibold text-xs rounded-full px-2 py-1">
@@ -25,8 +24,10 @@ const Overview = () => {
 
         {/* SECOND */}
         <div className="p-4 space-y-4 bg-shade border border-gray-200 rounded-xl">
-          <h4 className="text-xs text-gray-500 font-medium">Total Students</h4>
-          <h1 className="text-5xl font-semibold font-Headings">8,122</h1>
+          <h4 className="text-xs text-gray-500 font-medium">
+            Total Departments
+          </h4>
+          <h1 className="text-5xl font-semibold">8,122</h1>
 
           <div className="flex items-center gap-2">
             <div className="flex text-dominance bg-success  font-semibold text-xs rounded-full px-2 py-1">
@@ -40,10 +41,8 @@ const Overview = () => {
         </div>
         {/* THIRD */}
         <div className="p-4 space-y-4 bg-shade border border-gray-200 rounded-xl">
-          <h4 className="text-xs text-gray-500 font-medium">
-            This Month's Revenue
-          </h4>
-          <h1 className="text-5xl font-semibold font-Headings">
+          <h4 className="text-xs text-gray-500 font-medium">Total Venues</h4>
+          <h1 className="text-5xl font-semibold">
             16,002 <span className="text-base">USD</span>
           </h1>
 
@@ -59,10 +58,8 @@ const Overview = () => {
         </div>
       </div>
 
-      <div className=" grid grid-cols-2 gap-4">
-        <DailyRevenueChart />
-        <WeeklyRevenueChart />
-      </div>
+      {/* GENERATE TIME TABLE */}
+      <GenerateTimeTable />
     </div>
   );
 };

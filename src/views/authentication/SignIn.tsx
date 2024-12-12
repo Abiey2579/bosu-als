@@ -18,11 +18,7 @@ export default function SignIn() {
     try {
       setSpin(true);
       const promise = await signInWithEmailAndPassword(auth, email, password);
-      // alert("Sign in successful!");
-      // Redirect or perform additional actions here
-
-      console.log(promise);
-      navigateTo(URIPaths.Dashboard, { state: promise.user });
+      navigateTo(URIPaths.Dashboard, { state: JSON.stringify(promise) });
     } catch (err: any) {
       setError(err.message || "Failed to sign in");
     } finally {
