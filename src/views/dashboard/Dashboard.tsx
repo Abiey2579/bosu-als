@@ -4,10 +4,13 @@ import TopBar from "./components/topbar";
 import { useLocation, useNavigate } from "react-router-dom";
 import { URIPaths } from "../../util/URIPaths";
 import Overview from "./components/Overview";
+import GenerateTimeTable from "./components/GenerateTimeTable";
 
 const Dashboard = () => {
   const location = useLocation();
   const navigateTo = useNavigate();
+
+  let URIHash = useLocation().hash;
   useEffect(() => {
     if (!location.state) {
       navigateTo(URIPaths.SignIn);
@@ -18,7 +21,9 @@ const Dashboard = () => {
       <SideDrawer />
       <div className="relative w-full flex-1 overflow-y-scroll flex flex-col">
         <TopBar />
-        <Overview />
+        {URIHash === "" && <Overview />}
+        {URIHash === "#overview" && <Overview />}
+        {URIHash === "#create-timetable" && <GenerateTimeTable />}
       </div>
     </div>
   );

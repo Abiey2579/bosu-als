@@ -16,21 +16,21 @@ export const SideDrawer = () => {
   const activePage = useLocation().hash;
 
   const nonActivePageClass =
-    "flex items-center gap-3 w-full hover:bg-indigo-900 hover:text-gray-100 p-2 text-white rounded";
+    "flex items-center gap-3 w-full hover:bg-gray-100 hover:text-gray-800 p-2 text-white rounded";
   const activePageClass =
-    "flex items-center gap-3 w-full bg-indigo-900 p-2 rounded text-gray-100";
+    "flex items-center gap-3 w-full bg-gray-100 p-2 rounded text-gray-800";
 
   return (
     <Drawer
       backdrop={false}
       open={isOpen}
       onClose={handleClose}
-      className="bg-indigo-600 max-w-72 px-6 relative"
+      className="max-w-72 px-6 relative"
       theme={DrawerTheme}
     >
       <Drawer.Items className="h-full flex flex-col justify-between">
         <div>
-          <h1 className="py-2 font-bold text-xl text-white border-b border-gray-200 mb-12">
+          <h1 className="py-2 font-bold text-xl text-white border-b border-gray-600 mb-12">
             BOSU ALS
           </h1>
           <h5 className="text-xs font-medium text-gray-300 my-6">Navigation</h5>
@@ -44,13 +44,23 @@ export const SideDrawer = () => {
               }
             >
               <PresentationChartBarIcon className="w-5 " />
-              <span className="font-medium ">Time Table</span>
+              <span className="font-medium ">Overview</span>
+            </a>
+            <a
+              href="#create-timetable"
+              className={
+                activePage === "#create-timetable"
+                  ? activePageClass
+                  : nonActivePageClass
+              }
+            >
+              <PresentationChartBarIcon className="w-5 " />
+              <span className="font-medium ">Create Timetable</span>
             </a>
             <a
               href="#my-courses"
               className={
-                activePage === "#my-courses" ||
-                activePage === "#course-analytics"
+                activePage === "#my-courses"
                   ? activePageClass
                   : nonActivePageClass
               }
