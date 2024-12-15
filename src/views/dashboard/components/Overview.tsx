@@ -13,8 +13,8 @@ const Overview = () => {
       <div className="px-6 grid grid-cols-3 gap-4">
         {/* FIRST  */}
         <div className="p-4 space-y-4 bg-shade border rounded-xl">
-          <h4 className="text-xs text-gray-500 font-medium">Total Courses</h4>
-          <h1 className="text-5xl font-semibold">48</h1>
+          <h4 className="text-xs text-gray-500 font-medium">Total Faculties</h4>
+          <h1 className="text-5xl font-semibold">4</h1>
 
           <div className="flex items-center gap-2">
             <div className="flex text-white bg-cyan-600  font-semibold text-xs rounded-full px-2 py-1">
@@ -32,7 +32,7 @@ const Overview = () => {
           <h4 className="text-xs text-gray-500 font-medium">
             Total Departments
           </h4>
-          <h1 className="text-5xl font-semibold">8,122</h1>
+          <h1 className="text-5xl font-semibold">16</h1>
 
           <div className="flex items-center gap-2">
             <div className="flex text-white bg-cyan-600  font-semibold text-xs rounded-full px-2 py-1">
@@ -46,8 +46,10 @@ const Overview = () => {
         </div>
         {/* THIRD */}
         <div className="p-4 space-y-4 bg-shade border border-gray-200 rounded-xl">
-          <h4 className="text-xs text-gray-500 font-medium">Total Venues</h4>
-          <h1 className="text-5xl font-semibold">44</h1>
+          <h4 className="text-xs text-gray-500 font-medium">
+            Total Programmes
+          </h4>
+          <h1 className="text-5xl font-semibold">30</h1>
 
           <div className="flex items-center gap-2">
             <div className="flex text-white bg-cyan-600  font-semibold text-xs rounded-full px-2 py-1">
