@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { Button, Table } from "flowbite-react";
 import { collection, getDocs, doc, deleteDoc } from "firebase/firestore";
 import { db } from "../../../config/ClientSDK";
-import jsPDF from "jspdf";
 import { URIPaths } from "../../../util/URIPaths";
 
 const Logs = () => {
