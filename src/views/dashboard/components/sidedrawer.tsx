@@ -3,7 +3,7 @@
 import {
   PresentationChartBarIcon,
   UsersIcon,
-  VideoCameraIcon,
+  // VideoCameraIcon,
 } from "@heroicons/react/24/outline";
 import { Drawer } from "flowbite-react";
 import { useState } from "react";
@@ -57,7 +57,7 @@ export const SideDrawer = () => {
               <PresentationChartBarIcon className="w-5 " />
               <span className="font-medium ">Create Timetable</span>
             </a>
-            <a
+            {/* <a
               href="#my-courses"
               className={
                 activePage === "#my-courses"
@@ -67,11 +67,11 @@ export const SideDrawer = () => {
             >
               <VideoCameraIcon className="w-5 " />
               <span className="font-medium ">Access Control</span>
-            </a>
+            </a> */}
             <a
-              href="#my-team"
+              href="#logs"
               className={
-                activePage === "#my-team" ? activePageClass : nonActivePageClass
+                activePage === "#logs" ? activePageClass : nonActivePageClass
               }
             >
               <UsersIcon className="w-5 " />

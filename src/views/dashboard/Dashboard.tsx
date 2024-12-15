@@ -5,16 +5,20 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { URIPaths } from "../../util/URIPaths";
 import Overview from "./components/Overview";
 import GenerateTimeTable from "./components/GenerateTimeTable";
+import Logs from "./components/Logs";
 
 const Dashboard = () => {
   const location = useLocation();
   const navigateTo = useNavigate();
-
   let URIHash = useLocation().hash;
+
   useEffect(() => {
-    if (!location.state) {
+    const userSession = sessionStorage.getItem("userSession");
+    if (!location.state && !userSession) {
       navigateTo(URIPaths.SignIn);
     }
+
+    sessionStorage.setItem("userSession", location.state);
   }, []);
   return (
     <div className="h-screen flex">
@@ -24,6 +28,7 @@ const Dashboard = () => {
         {URIHash === "" && <Overview />}
         {URIHash === "#overview" && <Overview />}
         {URIHash === "#create-timetable" && <GenerateTimeTable />}
+        {URIHash === "#logs" && <Logs />}
       </div>
     </div>
   );

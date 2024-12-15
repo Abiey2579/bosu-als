@@ -1,12 +1,12 @@
-import { Button, Spinner } from "flowbite-react";
+import { Button } from "flowbite-react";
 import { timeSlotsList, venuesList, coursesList } from "../../../util/common";
-import { collection, addDoc } from "firebase/firestore";
-import { db } from "../../../config/ClientSDK";
+
 import { useState } from "react";
+import SaveTimeTable from "./SaveTimeTable";
 
 const GenerateTimeTable = () => {
   const [timetableData, setTimetableData] = useState<any[]>([]);
-  const [spin, setSpin] = useState<boolean>(false);
+  const [openModal, setOpenModal] = useState(false);
 
   // Generate a randomized weekly timetable
   function generateWeeklyTimetable(): void {
@@ -60,23 +60,6 @@ const GenerateTimeTable = () => {
     setTimetableData(newTimetable);
   }
 
-  // Save timetable to Firestore
-  const saveTimeTable = async () => {
-    try {
-      setSpin(true);
-      await addDoc(collection(db, "generatedTimetables"), {
-        createdAt: new Date().toISOString(),
-        timetable: timetableData,
-      });
-      alert("Timetable Saved");
-    } catch (error) {
-      // console.error("Error saving timetable:", error);
-      alert((error as Error).message);
-    } finally {
-      setSpin(false);
-    }
-  };
-
   // Render the timetable
   const renderTimetable = () => {
     return timetableData.map((day) => (
@@ -115,16 +98,24 @@ const GenerateTimeTable = () => {
         >
           <span>Generate Timetable</span>
         </Button>
-        <Button color={"success"} onClick={saveTimeTable} className="rounded">
-          {spin ? (
-            <>
-              <Spinner light className=" fill-green-600" />
-              <span className="ml-2">Saving...</span>
-            </>
-          ) : (
-            <span>Save Timetable</span>
-          )}
+        <Button
+          color={"success"}
+          onClick={() => {
+            if (timetableData.length === 0) {
+              alert("please generate timetable first");
+              return;
+            }
+            setOpenModal(true);
+          }}
+          className="rounded"
+        >
+          <span>Save Timetable</span>
         </Button>
+        <SaveTimeTable
+          timetableData={timetableData}
+          openModal={openModal}
+          setOpenModal={setOpenModal}
+        />
       </div>
       <section id="timetable">
         <table>
